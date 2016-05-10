@@ -53,6 +53,9 @@ gem 'execjs'
 gem 'twitter-bootstrap-rails'
 
 gem 'chartkick'
+gem 'lazy_high_charts'
+
+gem 'pry-rails'
 
 group :production, :staging do
 	gem 'rails_12factor'

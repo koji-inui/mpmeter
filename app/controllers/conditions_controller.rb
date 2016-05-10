@@ -5,7 +5,25 @@ class ConditionsController < ApplicationController
   # GET /conditions.json
   def index
     @conditions = Condition.all
-  #  @graph_data = Condition.order('cday ASC').mp
+#    cdays = @conditions.map{|condition| condition.cday.strftime("%Y-%m-%d")}
+#    cdays = @conditions.map{|condition| condition.cday}
+#    mps = @conditions.map{|condition| condition.mp}
+#    tickinterval = 2
+    
+#    category = [1,3,5,7]
+#    current_quantity = [1000,5000,3000,8000]
+#    current_quantity2 = [1000,5000,3000,8000,1000,5000,3000,8000]
+#    @graph = LazyHighCharts::HighChart.new('graphhhhh') do |f|
+#      f.title(text: 'aaaa')
+#      f.xAxis(categories: category)
+#      f.series(name: 'zaiko', data: current_quantity)
+#    end
+#    @data_mp = LazyHighCharts::HighChart.new('mpmp') do |f2|
+#      f2.title(text: 'bbb')
+#      f2.xAxis(categories: cdays, tickinterval: tickinterval)
+#      f2.series(name: 'zaiko', data: current_quantity2)
+#      f2.series(name: 'MP', data: mps)
+#    end
   end
 
   # GET /conditions/1
