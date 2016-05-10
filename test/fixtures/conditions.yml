@@ -1,0 +1,23 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user_id: 1
+  cday: 2016-05-09
+  mp: 1
+  hp: 1
+  temperature: 1
+  whether: MyString
+  sleep_time: 
+  eja_times: 1
+  noting: MyText
+
+two:
+  user_id: 1
+  cday: 2016-05-09
+  mp: 1
+  hp: 1
+  temperature: 1
+  whether: MyString
+  sleep_time: 
+  eja_times: 1
+  noting: MyText

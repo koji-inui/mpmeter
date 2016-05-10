@@ -1,0 +1,35 @@
+<%- model_class = Condition -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => model_class.model_name.human.titleize %></h1>
+</div>
+
+<dl class="dl-horizontal">
+  <dt><strong><%= model_class.human_attribute_name(:user_id) %>:</strong></dt>
+  <dd><%= @condition.user_id %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:cday) %>:</strong></dt>
+  <dd><%= @condition.cday %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:mp) %>:</strong></dt>
+  <dd><%= @condition.mp %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:hp) %>:</strong></dt>
+  <dd><%= @condition.hp %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:temperature) %>:</strong></dt>
+  <dd><%= @condition.temperature %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:whether) %>:</strong></dt>
+  <dd><%= @condition.whether %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:sleep_time) %>:</strong></dt>
+  <dd><%= @condition.sleep_time %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:eja_times) %>:</strong></dt>
+  <dd><%= @condition.eja_times %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:noting) %>:</strong></dt>
+  <dd><%= @condition.noting %></dd>
+</dl>
+
+<%= link_to t('.back', :default => t("helpers.links.back")),
+              conditions_path, :class => 'btn btn-default'  %>
+<%= link_to t('.edit', :default => t("helpers.links.edit")),
+              edit_condition_path(@condition), :class => 'btn btn-default' %>
+<%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+              condition_path(@condition),
+              :method => 'delete',
+              :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+              :class => 'btn btn-danger' %>
