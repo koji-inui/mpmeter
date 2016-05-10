@@ -53,7 +53,8 @@
 
 
 
-<%= line_chart Condition.group(:cday).count %>
+<%= line_chart Condition.group(:created_at).count %>
+<%= line_chart Condition.pluck(:cday, :mp) %>
 <%#= pie_chart ({"Football": 10, "Basketball": 5 }) %>
 <%= column_chart [["Football", 10], ["Basketball", 5 ]] %>
 
