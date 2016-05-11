@@ -53,7 +53,7 @@ gem 'execjs'
 gem 'twitter-bootstrap-rails'
 
 gem 'chartkick'
-gem 'lazy_high_charts'
+#gem 'lazy_high_charts'
 
 gem 'pry-rails'
 

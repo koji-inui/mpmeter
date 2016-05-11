@@ -6,9 +6,9 @@ class ConditionsController < ApplicationController
   def index
     @conditions = Condition.all
 #    cdays = @conditions.map{|condition| condition.cday.strftime("%Y-%m-%d")}
-#    cdays = @conditions.map{|condition| condition.cday}
-#    mps = @conditions.map{|condition| condition.mp}
-#    tickinterval = 2
+    cdays = @conditions.map{|condition| condition.cday}
+    mps = @conditions.map{|condition| condition.mp}
+    tickinterval = 2
     
 #    category = [1,3,5,7]
 #    current_quantity = [1000,5000,3000,8000]
@@ -19,10 +19,13 @@ class ConditionsController < ApplicationController
 #      f.series(name: 'zaiko', data: current_quantity)
 #    end
 #    @data_mp = LazyHighCharts::HighChart.new('mpmp') do |f2|
+#      f2.chart(type: 'spline')
 #      f2.title(text: 'bbb')
-#      f2.xAxis(categories: cdays, tickinterval: tickinterval)
+#      f2.xAxis(type: 'datetime', dateTimeLabelFormats: {month: '%e. %b', year: '%b'} )
+#      f2.xAxis(tickinterval: tickinterval)
 #      f2.series(name: 'zaiko', data: current_quantity2)
-#      f2.series(name: 'MP', data: mps)
+#      f2.series(name: 'day', data: cdays )
+#      f2.series(name: 'MP', data: mps )
 #    end
   end
 

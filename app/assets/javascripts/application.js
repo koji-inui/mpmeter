@@ -17,7 +17,7 @@
 //= require bootstrap
 //= require jsapi
 //= require chartkick
-//= require highcharts/highcharts
-//= require highcharts/highcharts-more
-//= require highcharts/highstock
+// require highcharts/highcharts
+// require highcharts/highcharts-more
+// require highcharts/highstock
 //= require_tree .
