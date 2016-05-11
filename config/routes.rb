@@ -1,8 +1,7 @@
 Rails.application.routes.draw do
   devise_for :users
   resources :conditions
-  resources :users, :only => [:show]
-#  resources :users
+  resources :users
   root "conditions#index"
 #  get 'users/:id'  =>  "users#show"
   # The priority is based upon order of creation: first created -> highest priority.
