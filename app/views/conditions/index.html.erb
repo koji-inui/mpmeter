@@ -58,7 +58,7 @@
 <%#= high_chart("zzz", @data_mp) %>
 <%= line_chart Condition.pluck(:cday, :mp) , min: -1, max: 6 , xtitle: "day" , ytitle: "やる気" , colors: ["pink"], library: {backgroundColor: "red"} %>
 <%= line_chart Condition.pluck(:cday, :mp) , min: -1, max: 6 , xtitle: "day" , ytitle: "やる気" , colors: ["blue"], library: {backgroundColor: "#888"} %>
-<%= line_chart [ {name: "mp" , data: Condition.pluck(:cday, :mp) } , {name: "気温" , data: Condition.pluck(:cday, :temperature) } ] , min: 0, max: 6 , xtitle: "日にち"  , library: {backgroundColor: "#eee"} %>
+<%= line_chart [ {name: "mp" , data: Condition.pluck(:cday, :mp) } , {name: "気温" , data: Condition.pluck(:cday, :temperature) } ] %>
 <%#= pie_chart ({"Football": 10, "Basketball": 5 }) %>
 <%= column_chart [["Football", 10], ["Basketball", 5 ]] %>
 
