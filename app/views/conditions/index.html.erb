@@ -1,3 +1,45 @@
+
+    <p>世の中のやる気</p>
+
+
+<%= line_chart [ 
+  {name: "やる気" , data: Condition.pluck(:cday, :mp)} , 
+  ],
+ :library => {
+    :hAxis => {:title => "日付", :type => "string", :baselineColor => "black"}, 
+    :curveType => "function", 
+    :backgroundColor => "#eee"
+  } 
+%>
+
+
+<%= line_chart [ 
+  {name: "回数" , data: Condition.pluck(:cday, :eja_times)}  
+   ] , 
+ :library => {
+    :hAxis => {:title => "日付", :type => "string", :baselineColor => "black"}, 
+    :curveType => "function", 
+    :colors => ["red"] ,
+    :backgroundColor => "#fff"
+  } 
+%>
+
+
+<%= line_chart [ 
+  {name: "体力" , data: Condition.pluck(:cday, :hp)} , 
+  {name: "睡眠時間" , data: Condition.pluck(:cday, :sleep_time)}
+   ], 
+ :library => {
+    :hAxis => {:title => "日付", :type => "string", :baselineColor => "black"}, 
+    :curveType => "function", 
+    :backgroundColor => "#eee"
+  } 
+%>
+
+
+
+
+
 <%- model_class = Condition -%>
 <div class="page-header">
   <h1><%=t '.title', :default => model_class.model_name.human.pluralize.titleize %></h1>

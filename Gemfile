@@ -57,6 +57,13 @@ gem 'chartkick'
 
 gem 'pry-rails'
 
+gem 'groupdate'
+
+#gem 'web-app-theme' , :git => 'https://github.com/pilu/web-app-theme.git'
+
+gem 'compass'
+gem 'compass-rails'
+
 group :production, :staging do
 	gem 'rails_12factor'
 	gem 'pg'

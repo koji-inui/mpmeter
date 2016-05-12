@@ -15,9 +15,6 @@
 //= require twitter/bootstrap
 //= require turbolinks
 //= require bootstrap
-//= require jsapi
 //= require chartkick
-// require highcharts/highcharts
-// require highcharts/highcharts-more
-// require highcharts/highstock
 //= require_tree .
+//= require jsapi
