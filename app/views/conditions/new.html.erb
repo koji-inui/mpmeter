@@ -16,8 +16,12 @@
 <div class="contents row">
   <%= form_tag('/conditions', method: :post) do %>
     <h3>
-      今日の調子を入力しよう！
+      今日の体調を入力しよう！
     </h3>
+    <input placeholder="cday" type="date" value=<%= Date.today %> name="condition[cday]" style="width:200px">
+    <FONT size="4">　　気温</FONT>   
+    <input placeholder="気温" type="number" value=<%= @tenki["list"][0]["main"]["temp"].to_i %> name="condition[temperature]" style="width:100px">
+    <br>
     <FONT size="4">やる気　</FONT>   
     <p> 
     1:
@@ -44,10 +48,25 @@
     5:
     <input type="radio" name="condition[hp]" value="5" style="width:20px;"> 
     </p>
-    <input placeholder="cday" type="date" name="condition[cday]">
-    <input placeholder="気温" type="number" value=<%= @tenki["list"][0]["main"]["temp"].to_i %> name="condition[temperature]">
-    <#input placeholder="やる気" type="integer" name="condition[mp]">
-    <#textarea cols="30" name="noting" placeholder="備考" rows="5"></textarea>
+    <FONT size="4">睡眠時間</FONT>   
+    <input placeholder="睡眠時間" type="number" value="7.0" min="0.0" max="24.0" step="0.5" name="condition[sleep_time]" style="width:100px">
+    <br>
+    <FONT size="4">回数</FONT>   
+    <p> 
+    0:
+    <input type="radio" name="condition[eja_times]" value="0" style="width:20px;"> 
+    1:
+    <input type="radio" name="condition[eja_times]" value="1" style="width:20px;" checked="checked" > 
+    2:
+    <input type="radio" name="condition[eja_times]" value="2" style="width:20px;"> 
+    3: 
+    <input type="radio" name="condition[eja_times]" value="3" style="width:20px;"> 
+    4:
+    <input type="radio" name="condition[eja_times]" value="4" style="width:20px;"> 
+    5:
+    <input type="radio" name="condition[eja_times]" value="5" style="width:20px;"> 
+    </p>
+    <textarea cols="30" name="condition[noting]" placeholder="備考" rows="5"></textarea>
     <input type="submit" value="SENT">
   <% end %>
 </div>

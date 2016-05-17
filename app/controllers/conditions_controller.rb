@@ -54,18 +54,21 @@ class ConditionsController < ApplicationController
   # POST /conditions
   # POST /conditions.json
   def create
-    @condition = Condition.new(user_id: current_user.id, cday: condition_params[:cday], mp: condition_params[:mp], hp: condition_params[:hp], temperature: condition_params[:temperature])
+    @condition = Condition.new(user_id: current_user.id, cday: condition_params[:cday], mp: condition_params[:mp], hp: condition_params[:hp], temperature: condition_params[:temperature], sleep_time: condition_params[:sleep_time],eja_times: condition_params[:eja_times],noting: condition_params[:noting])
     #Condition.create(user_id: current_user.id, cday: condition_params[:cday], mp: condition_params[:mp], hp: 2  )
 
     respond_to do |format|
       if @condition.save
-        format.html { redirect_to @condition, notice: 'Condition was successfully created.' }
+        format.html { redirect_to "/users/#{@condition.user_id}", notice: 'Condition was successfully created.' }
+    #    format.html { redirect_to @condition, notice: 'Condition was successfully created.' }
         format.json { render :show, status: :created, location: @condition }
       else
         format.html { render :new }
         format.json { render json: @condition.errors, status: :unprocessable_entity }
       end
     end
+
+#    redirect_to "/users/#{@condition.user_id}"
   end
 
   # PATCH/PUT /conditions/1
