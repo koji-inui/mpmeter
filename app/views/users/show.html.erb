@@ -91,9 +91,6 @@
 <%
 =begin
 %>
-<%
-=end
-%>
 
 <%= line_chart [ 
   {name: "体力" , data: Condition.pluck(:cday, :hp)} , 
@@ -114,4 +111,7 @@
     :curveType => "none", 
     :backgroundColor => "#ccffff"
   } 
+%>
+<%
+=end
 %>
