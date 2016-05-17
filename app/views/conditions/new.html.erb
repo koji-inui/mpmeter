@@ -1,5 +1,60 @@
 <%- model_class = Condition -%>
+<%
+=begin
+%>  
 <div class="page-header">
   <h1><%=t '.title', :default => [:'helpers.titles.new', 'New %{model}'], :model => model_class.model_name.human.titleize %></h1>
 </div>
-<%= render :partial => 'form' %>
+<p><%= @tenki["cod"] %></p>
+<%#= render :partial => 'form' %>
+
+<p><%= @tenki["list"][0]["main"]["temp"] %></p>
+<%
+=end
+%>  
+  
+<div class="contents row">
+  <%= form_tag('/conditions', method: :post) do %>
+    <h3>
+      今日の調子を入力しよう！
+    </h3>
+    <FONT size="4">やる気　</FONT>   
+    <p> 
+    1:
+    <input type="radio" name="condition[mp]" value="1" style="width:20px;"> 
+    2:
+    <input type="radio" name="condition[mp]" value="2" style="width:20px;"> 
+    3: 
+    <input type="radio" name="condition[mp]" value="3" checked="checked" style="width:20px;"> 
+    4:
+    <input type="radio" name="condition[mp]" value="4" style="width:20px;"> 
+    5:
+    <input type="radio" name="condition[mp]" value="5" style="width:20px;"> 
+    </p>
+    <FONT size="4">体力　</FONT>   
+    <p> 
+    1:
+    <input type="radio" name="condition[hp]" value="1" style="width:20px;"> 
+    2:
+    <input type="radio" name="condition[hp]" value="2" style="width:20px;"> 
+    3: 
+    <input type="radio" name="condition[hp]" value="3" checked="checked" style="width:20px;"> 
+    4:
+    <input type="radio" name="condition[hp]" value="4" style="width:20px;"> 
+    5:
+    <input type="radio" name="condition[hp]" value="5" style="width:20px;"> 
+    </p>
+    <input placeholder="cday" type="date" name="condition[cday]">
+    <input placeholder="気温" type="number" value=<%= @tenki["list"][0]["main"]["temp"].to_i %> name="condition[temperature]">
+    <#input placeholder="やる気" type="integer" name="condition[mp]">
+    <#textarea cols="30" name="noting" placeholder="備考" rows="5"></textarea>
+    <input type="submit" value="SENT">
+  <% end %>
+</div>
+
+<%
+=begin
+%>  
+<%
+=end
+%>  

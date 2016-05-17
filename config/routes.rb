@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
   devise_for :users
+  get '/conditions/temp'  => "conditions#destroy"
+  get '/conditions/temp2'  => "conditions#edit"
   resources :conditions
   resources :users
   root "conditions#index"

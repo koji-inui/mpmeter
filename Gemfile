@@ -64,6 +64,8 @@ gem 'groupdate'
 gem 'compass'
 gem 'compass-rails'
 
+gem 'weather_jp'
+
 group :production, :staging do
 	gem 'rails_12factor'
 	gem 'pg'

@@ -1,5 +1,6 @@
 class ConditionsController < ApplicationController
-  before_action :set_condition, only: [:show, :edit, :update, :destroy]
+  before_action :set_condition, only: [:show, :update]
+  before_action :set_condition_destroy, only: [:destroy, :edit]
   before_action :move_to_index, except: :index
 
   # GET /conditions
@@ -37,6 +38,12 @@ class ConditionsController < ApplicationController
 
   # GET /conditions/new
   def new
+    require "json"
+    require "open-uri"
+    api_key = "e1a6dfa87fed1ea45838113bbdea6cf7"
+    base_url = "http://api.openweathermap.org/data/2.5/forecast"
+    response = open(base_url + "?q=Tokyo,jp&units=metric&APPID=#{api_key}")
+    @tenki = JSON.parse(response.read)
     @condition = Condition.new
   end
 
@@ -47,7 +54,8 @@ class ConditionsController < ApplicationController
   # POST /conditions
   # POST /conditions.json
   def create
-    @condition = Condition.new(condition_params)
+    @condition = Condition.new(user_id: current_user.id, cday: condition_params[:cday], mp: condition_params[:mp], hp: condition_params[:hp], temperature: condition_params[:temperature])
+    #Condition.create(user_id: current_user.id, cday: condition_params[:cday], mp: condition_params[:mp], hp: 2  )
 
     respond_to do |format|
       if @condition.save
@@ -76,6 +84,7 @@ class ConditionsController < ApplicationController
 
   # DELETE /conditions/1
   # DELETE /conditions/1.json
+
   def destroy
     @condition.destroy
     respond_to do |format|
@@ -88,6 +97,10 @@ class ConditionsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_condition
       @condition = Condition.find(params[:id])
+    end
+
+    def set_condition_destroy
+      @condition = Condition.find_by(cday: params[:day_for_delete])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

@@ -1,5 +1,6 @@
 
-    <p>世の中のやる気</p>
+    <br>
+    <p style="text-align:center"><font size="5">世の中のやる気</font></p>
 
 
 <%= line_chart [ 
@@ -38,6 +39,9 @@
 
 
 
+<%
+=begin
+%>
 
 
 <%- model_class = Condition -%>
@@ -104,3 +108,6 @@
 <%#= pie_chart ({"Football": 10, "Basketball": 5 }) %>
 <%= column_chart [["Ftball", 10], ["Basketball", 5 ]] %>
 
+<%
+=end
+%>

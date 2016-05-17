@@ -1,11 +1,11 @@
 <%- model_class = User -%>
+<%
+=begin
+%>
 <div class="page-header">
   <h1><%=t '.title', :default => model_class.model_name.human.titleize %></h1>
 </div>
 
-<%
-=begin
-%>
 
 <dl class="dl-horizontal">
   <dt><strong><%= model_class.human_attribute_name(:email) %>:</strong></dt>
@@ -46,12 +46,14 @@
 <%
 =end
 %>
-    <p><%= @name %>さんの体調</p>
+    <br>
+    <p style="text-align:center"><font size="5"><%= @name %>さんの体調</font></p>
+    <%#= @akashi.city.id %>
 
 
 <%= line_chart [ 
-  {name: "やる気" , data: Condition.pluck(:cday, :mp)} , 
-  {name: "気温" , data: Condition.pluck(:cday, :temperature) } ] , 
+  {name: "やる気" , data: Condition.where(user_id: current_user.id).pluck(:cday, :mp)} , 
+  {name: "気温" , data: Condition.where(user_id: current_user.id).pluck(:cday, :temperature) } ] , 
  :library => {
     :hAxis => {:title => "日付", :type => "string", :baselineColor => "black"}, 
     :curveType => "function", 
@@ -61,8 +63,8 @@
 
 
 <%= line_chart [ 
-  {name: "やる気" , data: Condition.pluck(:cday, :mp)} , 
-  {name: "回数" , data: Condition.pluck(:cday, :eja_times)}  
+  {name: "やる気" , data: Condition.where(user_id: current_user.id).pluck(:cday, :mp)} , 
+  {name: "回数" , data: Condition.where(user_id: current_user.id).pluck(:cday, :eja_times)}  
    ] , 
  :library => {
     :hAxis => {:title => "日付", :type => "string", :baselineColor => "black"}, 
@@ -70,7 +72,23 @@
     :backgroundColor => "#fff"
   } 
 %>
+  <% if user_signed_in?  %>
+  <form action="/conditions/temp" target="_self" >
+    <input placeholder="cday" type="date" name="day_for_delete">
+    <input type="submit" value="削除">
+  </form>
+  <form action="/conditions/temp2" target="_self" >
+    <input placeholder="cday" type="date" name="day_for_delete">
+    <input type="submit" value="編集">
+  </form>
+  <% end %>
 
+<%
+=begin
+%>
+<%
+=end
+%>
 
 <%= line_chart [ 
   {name: "体力" , data: Condition.pluck(:cday, :hp)} , 
