@@ -129,6 +129,22 @@ header.header {
   z-index: 5;
   div.header__bar.row {
     position: relative;
+    h1.grid-12 {
+      font-size: 30px;
+      line-height: 41px;
+      float: center;
+      a {
+        display: block;
+      }
+    }
+    h1.grid-4 {
+      font-size: 20px;
+      line-height: 41px;
+      float: left;
+      a {
+        display: block;
+      }
+    }
     h1.grid-6 {
       font-size: 20px;
       line-height: 41px;
