@@ -41,9 +41,10 @@ class ConditionsController < ApplicationController
     require "json"
     require "open-uri"
     api_key = "e1a6dfa87fed1ea45838113bbdea6cf7"
-    base_url = "http://api.openweathermap.org/data/2.5/forecast"
-    response = open(base_url + "?q=Tokyo,jp&units=metric&APPID=#{api_key}")
-    @tenki = JSON.parse(response.read)
+    base_url = "http://api.openweathermap.org/data/2.5/weather"
+    response = open(base_url + "?id=1850147&units=metric&APPID=#{api_key}")
+    tenki = JSON.parse(response.read)
+    @today_temperature = tenki["main"]["temp"]
     @condition = Condition.new
   end
 

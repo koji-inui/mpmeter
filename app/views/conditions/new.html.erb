@@ -20,7 +20,7 @@
     </h3>
     <input placeholder="cday" type="date" value=<%= Date.today %> name="condition[cday]" style="width:200px">
     <FONT size="4">　　気温</FONT>   
-    <input placeholder="気温" type="number" value=<%= @tenki["list"][0]["main"]["temp"].to_i %> name="condition[temperature]" style="width:100px">
+    <input placeholder="気温" type="number" value=<%= @today_temperature.to_i %> name="condition[temperature]" style="width:100px">
     <br>
     <FONT size="4">やる気　</FONT>   
     <p> 

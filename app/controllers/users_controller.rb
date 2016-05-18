@@ -4,9 +4,10 @@ class UsersController < ApplicationController
     require "json"
     require "open-uri"
     api_key = "e1a6dfa87fed1ea45838113bbdea6cf7"
-    base_url = "http://api.openweathermap.org/data/2.5/forecast"
-    response = open(base_url + "?q=Tokyo,jp&units=metric&APPID=#{api_key}")
-    tenki = JSON.parse(response.read)
+    base_url = "http://api.openweathermap.org/data/2.5/forecast/daily"
+    #response = open(base_url + "?q=Tokyo,jp&units=metric&APPID=#{api_key}")
+    response = open(base_url + "?id=1850147&units=metric&APPID=#{api_key}")
+    @tenki = JSON.parse(response.read)
 
     @user = User.find(current_user.id)
     @name = current_user.email
@@ -17,7 +18,7 @@ class UsersController < ApplicationController
     today_tk = current_user.conditions.order("cday DESC ").first.temperature
     @today_condition = choushi(today_mp)
 
-    tomorrow_tk = tenki["list"][5]["main"]["temp"]
+    tomorrow_tk = @tenki["list"][1]["temp"]["day"]
 
     tomorrow_mp = forecast(today_mp,today_st,today_ej,today_tk,tomorrow_tk)
     @tomorrow_condition = choushi(tomorrow_mp)
