@@ -51,18 +51,19 @@
     <br>
     <br>
     <p>　<br></p>
-    <p style="text-align:center"><font size="5">今日の調子は<%= @today_condition %>でしたね!</font></p>
+    <p style="text-align:center"><font size="5">今日は<%= @today_condition %>でしたね!</font></p>
     <br>
-    <p style="text-align:center"><font size="5">明日の調子は<%= @tomorrow_condition %>ですね!</font></p>
+    <p style="text-align:center"><font size="5">明日は<%= @tomorrow_condition %>ですね!</font></p>
 
 
 <%= line_chart [ 
   {name: "やる気" , data: Condition.where(user_id: current_user.id).pluck(:cday, :mp)} , 
-  {name: "気温" , data: Condition.where(user_id: current_user.id).pluck(:cday, :temperature) } ] , 
+  {name: "睡眠時間" , data: Condition.where(user_id: current_user.id).pluck(:cday, :sleep_time) } ] , 
  :library => {
     :hAxis => {:title => "日付", :type => "string", :baselineColor => "black"}, 
     :curveType => "function", 
-    :backgroundColor => "#eee"
+    :backgroundColor => "#eee",
+    :colors => ["#DC3912","#3366CC"]
   } 
 %>
 
@@ -74,9 +75,40 @@
  :library => {
     :hAxis => {:title => "日付", :type => "string", :baselineColor => "black"}, 
     :curveType => "function", 
-    :backgroundColor => "#fff"
+    :backgroundColor => "#fff",
+    :colors => ["#DC3912","#109618"]
   } 
 %>
+
+
+<%= line_chart [ 
+  {name: "やる気" , data: Condition.where(user_id: current_user.id).pluck(:cday, :mp)} , 
+  {name: "気温" , data: Condition.where(user_id: current_user.id).pluck(:cday, :temperature)}  
+   ] , 
+ :library => {
+    :hAxis => {:title => "日付", :type => "string", :baselineColor => "black"}, 
+    :curveType => "function", 
+    :backgroundColor => "#eee",
+    :colors => ["#DC3912","#990099"]
+  } 
+%>
+
+
+<%= line_chart [ 
+  {name: "やる気" , data: Condition.where(user_id: current_user.id).pluck(:cday, :mp)} , 
+  {name: "睡眠時間" , data: Condition.where(user_id: current_user.id).pluck(:cday, :sleep_time)} , 
+  {name: "回数" , data: Condition.where(user_id: current_user.id).pluck(:cday, :eja_times)} , 
+  {name: "気温" , data: Condition.where(user_id: current_user.id).pluck(:cday, :temperature)}  
+   ] , 
+ :library => {
+    :hAxis => {:title => "日付", :type => "string", :baselineColor => "black"}, 
+    :curveType => "function", 
+    :backgroundColor => "#fff",
+    :colors => ["#DC3912","#3366CC","#109618","#990099"]
+  } 
+%>
+
+
   <% if user_signed_in?  %>
   <form action="/conditions/temp" target="_self" >
     <input placeholder="cday" type="date" name="day_for_delete">

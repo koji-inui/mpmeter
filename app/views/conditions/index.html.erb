@@ -11,7 +11,20 @@
  :library => {
     :hAxis => {:title => "日付", :type => "string", :baselineColor => "black"}, 
     :curveType => "function", 
-    :backgroundColor => "#eee"
+    :backgroundColor => "#eee",
+    :colors => ["#DC3912"]
+  } 
+%>
+
+
+<%= line_chart [ 
+  {name: "睡眠時間" , data: Condition.pluck(:cday, :sleep_time)}
+   ], 
+ :library => {
+    :hAxis => {:title => "日付", :type => "string", :baselineColor => "black"}, 
+    :curveType => "function", 
+    :backgroundColor => "#fff",
+    :colors => ["#3366CC"]
   } 
 %>
 
@@ -22,20 +35,20 @@
  :library => {
     :hAxis => {:title => "日付", :type => "string", :baselineColor => "black"}, 
     :curveType => "function", 
-    :colors => ["red"] ,
-    :backgroundColor => "#fff"
+    :colors => ["109618"] ,
+    :backgroundColor => "#eee"
   } 
 %>
 
 
 <%= line_chart [ 
-  {name: "体力" , data: Condition.pluck(:cday, :hp)} , 
-  {name: "睡眠時間" , data: Condition.pluck(:cday, :sleep_time)}
+  {name: "気温" , data: Condition.pluck(:cday, :temperature)}
    ], 
  :library => {
     :hAxis => {:title => "日付", :type => "string", :baselineColor => "black"}, 
     :curveType => "function", 
-    :backgroundColor => "#eee"
+    :backgroundColor => "#fff",
+    :colors => ["#990099"]
   } 
 %>
 

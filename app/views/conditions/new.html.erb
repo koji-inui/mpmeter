@@ -18,9 +18,9 @@
     <h3>
       今日の体調を入力しよう！
     </h3>
-    <input placeholder="cday" type="date" value=<%= Date.today %> name="condition[cday]" style="width:200px">
+    <input placeholder="cday" type="date" value=<%= Date.today %> name="condition[cday]" style="width:200px" required>
     <FONT size="4">　　気温</FONT>   
-    <input placeholder="気温" type="number" value=<%= @today_temperature.to_i %> name="condition[temperature]" style="width:100px">
+    <input placeholder="気温" type="number" value=<%= @today_temperature.to_i %> name="condition[temperature]" style="width:100px" required>
     <br>
     <FONT size="4">やる気　</FONT>   
     <p> 
@@ -49,7 +49,7 @@
     <input type="radio" name="condition[hp]" value="5" style="width:20px;"> 
     </p>
     <FONT size="4">睡眠時間</FONT>   
-    <input placeholder="睡眠時間" type="number" value="7.0" min="0.0" max="24.0" step="0.5" name="condition[sleep_time]" style="width:100px">
+    <input placeholder="睡眠時間" type="number" value="7.0" min="0.0" max="24.0" step="0.5" name="condition[sleep_time]" style="width:100px" required>
     <br>
     <FONT size="4">回数</FONT>   
     <p> 

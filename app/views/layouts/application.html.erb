@@ -31,7 +31,7 @@
     <% if user_signed_in? %>
     <div class="header__bar row">
       <h1 class="grid-4"><a href="/users/<%= current_user.id %>">マイページ</a></h1>
-      <h1 class="grid-4"><a href="/conditions/new">調子を登録</a></h1>
+      <h1 class="grid-4"><a href="/conditions/new">今日の調子を入力</a></h1>
       <h1 class="grid-4"><%= link_to "ログアウト", destroy_user_session_path, method: :delete %></h1>
     </div>
     <% else %>

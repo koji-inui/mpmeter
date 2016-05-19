@@ -54,7 +54,7 @@ class UsersController < ApplicationController
     end
 
     def forecast(mp,st,ej,t_toda,t_tomo)
-      if st > 8.0
+      if st > 8.0 then
         st_add = 2
       elsif st  > 6.5
         st_add = 1
@@ -66,9 +66,10 @@ class UsersController < ApplicationController
         st_add = -2
       end
 
+      tomorrow_mp =  mp + st_add - ej
+      
       tomorrow_mp += 1 if ej == 0
 
-      tomorrow_mp =  mp + st_add - ej
 
       if (t_tomo - t_toda).abs > 8.0
         tomorrow_mp -= 1
